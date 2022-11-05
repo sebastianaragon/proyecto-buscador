@@ -19,16 +19,16 @@ def buscadora(ruta,patron):
     for direccion,carpetas,archivos in os.walk(ruta):
         for arch in archivos:
             archivs=Path(direccion,arch)
-            archiv=open(archivs,'r')
-            archivo=archiv.read()
+            archiv=archivs.read_text()
             
-            if re.search(patron,archivo):
+            
+            if re.search(patron,archiv):
                 archivos_encontrados.append(arch)
-                list_text=list(re.search(patron,archivo).span())
+                list_text=list(re.search(patron,archiv).span())
                 #print(list_text)
                 num1=list_text[0]
                 num2=list_text[1]
-                nros_encontrados.append(archivo[num1:num2])
+                nros_encontrados.append(archiv[num1:num2])
     tuple_text=zip(archivos_encontrados,nros_encontrados)
     for texto,documento in tuple_text:
         print(f'en el archivo {texto}--se encontró {documento}')
