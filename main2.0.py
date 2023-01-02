@@ -25,7 +25,7 @@ def buscadora(ruta,patron):
             if re.search(patron,archiv):
                 archivos_encontrados.append(arch)
                 list_text=list(re.search(patron,archiv).span())
-                #print(list_text)
+                print(list_text)
                 num1=list_text[0]
                 num2=list_text[1]
                 nros_encontrados.append(archiv[num1:num2])
